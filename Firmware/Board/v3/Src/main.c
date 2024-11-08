@@ -212,7 +212,30 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
+    // 初始化代码...
+    
+    // 初始化 USB
+    MX_USB_DEVICE_Init();
 
+    // 启动 FreeRTOS 调度器
+    osKernelStart();
+    
+    // 我们不应该到达这里，因为控制权现在由调度器接管
+    // 无限循环
+    while (1)
+    {
+        // 检查 USB 状态
+        if (hUsbDeviceFS.dev_state == USBD_STATE_CONFIGURED)
+        {
+            printf("USB is configured\n");
+        }
+        else
+        {
+            printf("USB is not configured\n");
+        }
+
+        // 延迟一段时间，避免过于频繁地打印
+    }
   /* USER CODE BEGIN 3 */
 
   }
