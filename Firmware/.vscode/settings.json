@@ -1,5 +1,7 @@
 {
-    "C_Cpp.intelliSenseEngine": "Default",
+    "cortex-debug.armToolchainPath": "D:\\ST\\GNU Arm Embedded Toolchain\\10 2021.10\\bin",
+    "cortex-debug.openocdPath": "D:\\ST\\OPENOCD-20231002\\OPENOCD-20231002-0.12.0\\BIN\\OPENOCD.EXE",
+    "C_Cpp.intelliSenseEngine": "default",
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
     "files.associations": {
         "memory": "cpp",
@@ -22,15 +24,12 @@
         "iosfwd": "cpp",
         "istream": "cpp",
         "limits": "cpp",
+        "iterator": "cpp",
+        "random": "cpp",
         "new": "cpp",
-        "ostream": "cpp",
-        "stdexcept": "cpp",
         "streambuf": "cpp",
-        "string_view": "cpp",
-        "system_error": "cpp",
-        "tuple": "cpp",
         "type_traits": "cpp",
-        "typeinfo": "cpp",
-        "algorithm": "cpp"
-    }
+        "tuple": "cpp"
+    },
+    "cortex-debug.variableUseNaturalFormat": true
 }
