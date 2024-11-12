@@ -63,6 +63,7 @@
 			"optional": "cpp",
 			"sstream": "cpp",
 			"utils.h": "c"
-		}
+		},
+		"cortex-debug.armToolchainPath": "D:\\ST\\GNU Arm Embedded Toolchain\\10 2021.10\\bin"
 	}
 }
