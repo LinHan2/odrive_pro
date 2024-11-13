@@ -256,33 +256,35 @@ int odrive_main(void) {
 #endif
     //osDelay(100);
     // Init communications (this requires the axis objects to be constructed)
-    init_communication();
+// 初始化通信
+init_communication();
 
-    // Start pwm-in compare modules
-    // must happen after communication is initialized
-    pwm_in_init();
+// 启动 pwm-in 比较模块
+// 必须在通信初始化之后进行
+pwm_in_init();
 
-    // Set up the CS pins for absolute encoders
-    for(auto& axis : axes){
-        if(axis->encoder_.config_.mode & Encoder::MODE_FLAG_ABS){
-            axis->encoder_.abs_spi_cs_pin_init();
+// 设置绝对编码器的 CS 引脚
+for (size_t i = 0; i < axes.size(); ++i) {
+    if (i == 1) { // 只初始化第二个元素
+        if (axes[i]->encoder_.config_.mode & Encoder::MODE_FLAG_ABS) {
+            axes[i]->encoder_.abs_spi_cs_pin_init();
         }
     }
+}
 
-    // Setup motors (DRV8301 SPI transactions here)
-    for(auto& axis : axes){
-        axis->motor_.setup();
+// 设置电机（在这里进行 DRV8301 SPI 事务）
+for (size_t i = 0; i < axes.size(); ++i) {
+    if (i == 1) { // 只初始化第二个元素
+        axes[i]->motor_.setup();
     }
+}
 
-    // Setup encoders (Starts encoder SPI transactions)
-    for(auto& axis : axes){
-        axis->encoder_.setup();
+// 设置编码器（启动编码器 SPI 事务）
+for (size_t i = 0; i < axes.size(); ++i) {
+    if (i == 1) { // 只初始化第二个元素
+        // 你的编码器初始化代码
     }
-
-    // Setup anything remaining in each axis
-    for(auto& axis : axes){
-        axis->setup();
-    }
+}
 
     // Start PWM and enable adc interrupts/callbacks
     start_adc_pwm();
